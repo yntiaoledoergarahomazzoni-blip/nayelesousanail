@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nail Designer | Links</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #fff0f6 50%, #f8f0ff 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '✨';
+            position: fixed;
+            top: 10%;
+            left: 15%;
+            font-size: 40px;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '💅';
+            position: fixed;
+            bottom: 15%;
+            right: 10%;
+            font-size: 45px;
+            opacity: 0.3;
+            animation: float 7s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .container {
+            max-width: 480px;
+            width: 100%;
+            background: white;
+            border-radius: 30px;
+            padding: 45px 35px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.15);
+            margin: 0 auto;
+            animation: slideUp 0.7s ease;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #ffeef8 0%, #fff0f6 100%);
+            border: 2px solid #ffe0f0;
+            color: #d946a6;
+            padding: 12px 24px;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(135deg, #ff69b4 0%, #d946a6 100%);
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .profile-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .profile-img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ff69b4;
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        .name {
+            color: #d946a6;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .title {
+            color: #ff69b4;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .bio {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 30px;
+        }
+
+        .link-item {
+            background: linear-gradient(135deg, #ffeef8 0%, #fff0f6 100%);
+            border: 2px solid #ffe0f0;
+            border-radius: 20px;
+            padding: 18px 24px;
+            text-decoration: none;
+            color: #d946a6;
+            font-weight: 600;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .link-item:hover {
+            background: linear-gradient(135deg, #ff69b4 0%, #d946a6 100%);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255, 105, 180, 0.3);
+        }
+
+        .link-icon {
+            font-size: 22px;
+            min-width: 26px;
+        }
+
+        .social-section {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 2px solid #ffeef8;
+        }
+
+        .social-label {
+            color: #999;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 18px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .social-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ff69b4 0%, #d946a6 100%);
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-4px) scale(1.08);
+        }
+
+        .page-title {
+            color: #d946a6;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 3px solid #ffe0f0;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            border-color: #ff69b4;
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .price-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: separate;
+            border-spacing: 0 12px;
+        }
+
+        .price-row {
+            background: linear-gradient(135deg, #ffeef8 0%, #fff0f6 100%);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .price-row td {
+            padding: 18px 20px;
+        }
+
+        .service-name {
+            color: #d946a6;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .service-desc {
+            color: #999;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .price {
+            color: #ff69b4;
+            font-weight: 700;
+            font-size: 18px;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .testimonial-item {
+            background: linear-gradient(135deg, #ffeef8 0%, #fff0f6 100%);
+            border: 2px solid #ffe0f0;
+            border-radius: 16px;
+            padding: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.2);
+            border-color: #ff69b4;
+        }
+
+        .testimonial-img {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 12px;
+            object-fit: scale-down;
+            margin-bottom: 10px;
+            border: 2px solid #ffe0f0;
+        }
+
+        .testimonial-name {
+            color: #d946a6;
+            font-weight: 700;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 35px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- PÁGINA PRINCIPAL -->
+    <div class="container">
+        <div id="home" class="page active">
+            <div class="header">
+                <div class="profile-wrapper">
+                    <img src="perfil.jpg" alt="Nail Designer" class="profile-img">
+                </div>
+                <h1 class="name">Nayele Sousa</h1>
+                <p class="title">Nail Designer</p>
+                <p class="bio">Transformando unhas em obras de arte ✨ Especialista em Nails Art. Molde F1, Gel na Tips, alongamento e cuidados personalizados 💅</p>
+            </div>
+
+            <div class="links">
+                <a href="https://wa.me/5511917551948" class="link-item" target="_blank">
+                    <span class="link-icon">💬</span>
+                    <span class="link-text">Agendar Horário</span>
+                </a>
+                
+                <div class="link-item" onclick="showPage('gallery')">
+                    <span class="link-icon">📸</span>
+                    <span class="link-text">Galeria de Trabalhos</span>
+                </div>
+                
+                <div class="link-item" onclick="showPage('prices')">
+                    <span class="link-icon">💅</span>
+                    <span class="link-text">Serviços & Preços</span>
+                </div>
+                
+                <div class="link-item" onclick="showPage('testimonials')">
+                    <span class="link-icon">⭐</span>
+                    <span class="link-text">Depoimentos de Clientes</span>
+                </div>
+                
+                <a href="https://maps.app.goo.gl/nkc7t72snXfPmW8i7?g_st=ipc" class="link-item" target="_blank">
+                    <span class="link-icon">📍</span>
+                    <span class="link-text">Localização do Studio</span>
+                </a>
+            </div>
+
+            <div class="social-section">
+                <p class="social-label">Siga nas Redes</p>
+                <div class="social-icons">
+                    <a href="https://instagram.com/nayelesousa_nails" class="social-icon" target="_blank"><!--
+tags: [logo, app, application, images, photos, videos, post, stories, online, community]
+category: Brand
+version: "1.9"
+unicode: "ec20"
+-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#ffffff"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />
+  <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+  <path d="M16.5 7.5v.01" />
+</svg></a>
+                    <a href="https://tiktok.com/nayelesousa_nails" class="social-icon" target="_blank"><!--
+tags: [logo, app, application, mobile, video, music]
+category: Brand
+version: "1.13"
+unicode: "ec73"
+-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#ffffff"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M21 7.917v4.034a9.948 9.948 0 0 1 -5 -1.951v4.5a6.5 6.5 0 1 1 -8 -6.326v4.326a2.5 2.5 0 1 0 4 2v-11.5h4.083a6.005 6.005 0 0 0 4.917 4.917z" />
+</svg></a>
+                    <a href="https://pinterest.com/seunails" class="social-icon" target="_blank"><!--
+tags: [logo, website, images, materials]
+category: Brand
+version: "1.15"
+unicode: "ec8d"
+-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#ffffff"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 20l4 -9" />
+  <path d="M10.7 14c.437 1.263 1.43 2 2.55 2c2.071 0 3.75 -1.554 3.75 -4a5 5 0 1 0 -9.7 1.7" />
+  <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+</svg></a>
+                    <a href="https://wa.me/5511917551948" class="social-icon" target="_blank"><!--
+tags: [logo, app, application, communication, text, messages, communicator, photos, images, videos, giphy]
+category: Brand
+version: "1.13"
+unicode: "ec74"
+-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#ffffff"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+  <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+</svg></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- PÁGINA GALERIA -->
+        <div id="gallery" class="page">
+            <button class="back-btn" onclick="showPage('home')">← Voltar</button>
+            <h2 class="page-title">Galeria de Trabalhos</h2>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/img/galeria1.jpg" alt="Trabalho 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/img/galeria2.jpg" alt="Trabalho 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/img/galeria3.jpg" alt="Trabalho 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/img/galeria4.jpg" alt="Trabalho 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/img/galeria5.jpg" alt="Trabalho 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/img/galeria6.jpg" alt="Trabalho 6">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/img/galeria7.jpg" alt="Trabalho 7">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/img/galeria8.jpg" alt="Trabalho 8">
+                </div>
+            </div>
+        </div>
+
+        <!-- PÁGINA PREÇOS -->
+        <div id="prices" class="page">
+            <button class="back-btn" onclick="showPage('home')">← Voltar</button>
+            <h2 class="page-title">Serviços & Preços</h2>
+            
+            <table class="price-table">
+                <tr class="price-row">
+                    <td>
+                        <div class="service-name">Manicure Completa</div>
+                        <div class="service-desc">Esmaltação + cutículas + hidratação</div>
+                    </td>
+                    <td class="price">R$ 50</td>
+                </tr>
+                <tr class="price-row">
+                    <td>
+                        <div class="service-name">Pedicure Completa</div>
+                        <div class="service-desc">Esmaltação + cutículas + esfoliação</div>
+                    </td>
+                    <td class="price">R$ 60</td>
+                </tr>
+                <tr class="price-row">
+                    <td>
+                        <div class="service-name">Alongamento em Gel</div>
+                        <div class="service-desc">Estruturação completa com gel</div>
+                    </td>
+                    <td class="price">R$ 150</td>
+                </tr>
+                <tr class="price-row">
+                    <td>
+                        <div class="service-name">Alongamento em Fibra</div>
+                        <div class="service-desc">Alongamento com fibra de vidro</div>
+                    </td>
+                    <td class="price">R$ 120</td>
+                </tr>
+                <tr class="price-row">
+                    <td>
+                        <div class="service-name">Blindagem</div>
+                        <div class="service-desc">Fortalecimento das unhas naturais</div>
+                    </td>
+                    <td class="price">R$ 80</td>
+                </tr>
+                <tr class="price-row">
+                    <td>
+                        <div class="service-name">Nail Art Simples</div>
+                        <div class="service-desc">Decoração em até 5 unhas</div>
+                    </td>
+                    <td class="price">R$ 30</td>
+                </tr>
+                <tr class="price-row">
+                    <td>
+                        <div class="service-name">Nail Art Completa</div>
+                        <div class="service-desc">Decoração detalhada em todas as unhas</div>
+                    </td>
+                    <td class="price">R$ 80</td>
+                </tr>
+                <tr class="price-row">
+                    <td>
+                        <div class="service-name">Manutenção</div>
+                        <div class="service-desc">Retoque de alongamento (15-20 dias)</div>
+                    </td>
+                    <td class="price">R$ 90</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- PÁGINA DEPOIMENTOS -->
+        <div id="testimonials" class="page">
+            <button class="back-btn" onclick="showPage('home')">← Voltar</button>
+            <h2 class="page-title">Depoimentos</h2>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-item">
+                    <img src="depoimento1.jpg" alt="Depoimento 1" class="testimonial-img">
+                    <p class="testimonial-name">Cliente 1</p>
+                </div>
+                <div class="testimonial-item">
+                    <img src="depoimento2.jpg" alt="Depoimento 2" class="testimonial-img">
+                    <p class="testimonial-name">Cliente 2</p>
+                </div>
+                <div class="testimonial-item">
+                    <img src="depoimento3.jpg" alt="Depoimento 3" class="testimonial-img">
+                    <p class="testimonial-name">Cliente 3</p>
+                </div>
+                <div class="testimonial-item">
+                    <img src="depoimento4.jpg" alt="Depoimento 4" class="testimonial-img">
+                    <p class="testimonial-name">Cliente 4</p>
+                </div>
+                <div class="testimonial-item">
+                    <img src="depoimento5.jpg" alt="Depoimento 5" class="testimonial-img">
+                    <p class="testimonial-name">Cliente 5</p>
+                </div>
+                <div class="testimonial-item">
+                    <img src="depoimento6.jpg" alt="Depoimento 6" class="testimonial-img">
+                    <p class="testimonial-name">Cliente 6</p>
+                </div>
+                <div class="testimonial-item">
+                    <img src="depoimento7.jpg" alt="Depoimento 7" class="testimonial-img">
+                    <p class="testimonial-name">Cliente 7</p>
+                </div>
+                <div class="testimonial-item">
+                    <img src="depoimento8.jpg" alt="Depoimento 8" class="testimonial-img">
+                    <p class="testimonial-name">Cliente 8</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
